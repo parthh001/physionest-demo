@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f3d3e">
+<title>PhysioNest — Physiotherapy Clinic in Hinjewadi (Demo)</title>
+<meta name="description" content="Personalised physiotherapy for neck, back and shoulder pain in Hinjewadi Phase 1, opposite DMart. Rated 5.0 on Google.">
+<!-- WhatsApp / social link preview. After deploying, replace YOUR-SITE-URL with your real link (e.g. physionest-demo.vercel.app) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="PhysioNest · Physiotherapy in Hinjewadi">
+<meta property="og:description" content="Personalised care for neck, back & shoulder pain. Rated 5.0 on Google. Book on WhatsApp.">
+<meta property="og:image" content="https://YOUR-SITE-URL/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10292a; --deep:#0f3d3e; --teal:#1f6f6b; --mint:#e6f2ef; --sand:#faf6f0;
+    --coral:#e8735a; --coral-d:#cf5c44; --muted:#5b6b6b; --line:#dfe7e4; --white:#fff;
+    --r:18px; --shadow:0 10px 30px -12px rgba(15,61,62,.25);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--sand);line-height:1.55;font-size:16px;padding-bottom:84px}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  section{padding:56px 0}
+  .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+  h2{font-size:1.85rem;margin-bottom:14px}
+  .lead{color:var(--muted);font-size:1.02rem}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:40;background:rgba(250,246,240,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+  header.scrolled{border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:Fraunces,serif;font-weight:600;font-size:1.25rem;color:var(--deep)}
+  .logo svg{width:30px;height:30px}
+  .status{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:600;padding:6px 11px;border-radius:99px;background:var(--white);border:1px solid var(--line)}
+  .dot{width:8px;height:8px;border-radius:50%;background:#9aa}
+  .open .dot{background:#22a06b;box-shadow:0 0 0 0 rgba(34,160,107,.5);animation:pulse 2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 7px rgba(34,160,107,0)}100%{box-shadow:0 0 0 0 rgba(34,160,107,0)}}
+  .desk-links{display:none}
+
+  /* Hero */
+  .hero{padding:28px 0 48px;position:relative;overflow:hidden}
+  .hero-blob{position:absolute;right:-120px;top:-60px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#cfe6e0,transparent 70%);z-index:-1}
+  .rating-pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:.85rem;font-weight:600;margin-bottom:18px;text-decoration:none}
+  .stars{color:#f4b400;letter-spacing:1px}
+  .hero h1{font-size:2.35rem;margin-bottom:14px;color:var(--deep)}
+  .hero h1 em{font-style:italic;color:var(--coral)}
+  .hero p{color:var(--muted);font-size:1.05rem;margin-bottom:24px;max-width:34em}
+  .cta-row{display:flex;flex-direction:column;gap:10px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:9px;padding:15px 20px;border-radius:14px;font-weight:600;font-size:1rem;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .2s;font-family:inherit}
+  .btn:active{transform:scale(.98)}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 8px 20px -8px rgba(232,115,90,.7)}
+  .btn-primary:hover{background:var(--coral-d)}
+  .btn-ghost{background:var(--white);color:var(--deep);border:1.5px solid var(--line)}
+  .hero-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px;font-size:.88rem;color:var(--muted)}
+  .hero-meta span{display:flex;align-items:center;gap:6px}
+  .hero-meta svg{width:16px;height:16px;color:var(--teal)}
+  .hero-art{display:none}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:34px}
+  .stat{background:var(--white);border-radius:var(--r);padding:16px 10px;text-align:center;border:1px solid var(--line)}
+  .stat b{display:block;font-family:Fraunces,serif;font-size:1.6rem;color:var(--deep)}
+  .stat small{font-size:.74rem;color:var(--muted);font-weight:500}
+
+  /* Pain finder */
+  .finder{background:var(--deep);color:#fff;border-radius:28px;margin:0 12px}
+  .finder .eyebrow{color:#9fd6cc}
+  .finder .lead{color:#c3dcd8}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0}
+  .chip{padding:11px 16px;border-radius:99px;border:1.5px solid rgba(255,255,255,.25);background:transparent;color:#fff;font:600 .92rem Inter,sans-serif;cursor:pointer;transition:all .2s}
+  .chip.active{background:#fff;color:var(--deep);border-color:#fff}
+  .finder-card{background:rgba(255,255,255,.08);border-radius:var(--r);padding:20px;min-height:150px}
+  .finder-card h3{font-size:1.3rem;margin-bottom:8px}
+  .finder-card p{color:#d6e8e5;font-size:.95rem;margin-bottom:16px}
+  .finder-card ul{list-style:none;margin-bottom:18px}
+  .finder-card li{padding-left:24px;position:relative;font-size:.92rem;margin-bottom:6px;color:#e9f4f2}
+  .finder-card li:before{content:"";position:absolute;left:0;top:7px;width:12px;height:7px;border-left:2px solid #9fd6cc;border-bottom:2px solid #9fd6cc;transform:rotate(-45deg)}
+  .fade{animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* Approach */
+  .steps{display:grid;gap:14px;margin-top:26px}
+  .step{display:flex;gap:16px;background:var(--white);padding:20px;border-radius:var(--r);border:1px solid var(--line)}
+  .step-n{flex:none;width:42px;height:42px;border-radius:12px;background:var(--mint);color:var(--teal);font:600 1.15rem Fraunces,serif;display:grid;place-items:center}
+  .step h3{font-size:1.1rem;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:.94rem}
+
+  /* Doctors */
+  .docs{display:grid;gap:14px;margin-top:26px}
+  .doc{background:var(--white);border-radius:var(--r);padding:22px;border:1px solid var(--line);display:flex;gap:16px;align-items:center}
+  .avatar{flex:none;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font:600 1.5rem Fraunces,serif;color:#fff}
+  .doc h3{font-size:1.15rem}
+  .doc p{color:var(--muted);font-size:.9rem}
+  .tag{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:600;background:var(--mint);color:var(--teal);padding:4px 9px;border-radius:99px}
+
+  /* Reviews */
+  .reviews{background:var(--mint)}
+  .rev-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+  .rev-score{text-align:right}
+  .rev-score b{font:600 2.4rem Fraunces,serif;color:var(--deep);display:block;line-height:1}
+  .rev-score small{font-size:.78rem;color:var(--muted)}
+  .track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:24px 20px 8px;margin:0 -20px;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .rev{flex:0 0 86%;scroll-snap-align:center;background:var(--white);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+  .rev .stars{font-size:.95rem}
+  .rev blockquote{margin:10px 0 14px;font-size:.98rem}
+  .rev cite{font-style:normal;font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
+  .dots i{width:7px;height:7px;border-radius:99px;background:#b9d3cd;transition:all .25s}
+  .dots i.on{width:22px;background:var(--teal)}
+
+  /* Booking */
+  .book-card{background:var(--white);border-radius:24px;padding:24px;box-shadow:var(--shadow);border:1px solid var(--line);margin-top:24px}
+  label{display:block;font-size:.85rem;font-weight:600;margin:14px 0 6px}
+  input,select,textarea{width:100%;padding:14px;border-radius:12px;border:1.5px solid var(--line);font:inherit;font-size:16px;background:var(--sand);color:var(--ink);transition:border-color .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+  textarea{resize:vertical;min-height:80px}
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .slot{padding:12px 6px;border-radius:12px;border:1.5px solid var(--line);background:var(--sand);font:600 .85rem Inter,sans-serif;cursor:pointer;color:var(--ink)}
+  .slot small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
+  .slot.active{border-color:var(--teal);background:var(--mint);color:var(--deep)}
+  .book-card .btn{width:100%;margin-top:20px}
+  .note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:10px}
+
+  /* Visit */
+  .visit-grid{display:grid;gap:14px;margin-top:24px}
+  .map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);height:260px;background:var(--mint)}
+  .map iframe{width:100%;height:100%;border:0}
+  .info{background:var(--white);border-radius:var(--r);padding:22px;border:1px solid var(--line)}
+  .info h3{font-size:1.05rem;margin-bottom:6px}
+  .info p{color:var(--muted);font-size:.94rem;margin-bottom:16px}
+  .hours{width:100%;border-collapse:collapse;font-size:.92rem}
+  .hours td{padding:7px 0;border-bottom:1px dashed var(--line)}
+  .hours td:last-child{text-align:right;font-weight:600}
+  .hours tr.today td{color:var(--teal)}
+  .hours tr.today td:first-child:after{content:" · Today";font-weight:600;font-size:.78rem}
+
+  /* FAQ */
+  .faq{margin-top:22px}
+  details{background:var(--white);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+  summary{list-style:none;cursor:pointer;padding:17px 50px 17px 18px;font-weight:600;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--teal);transition:transform .2s}
+  details[open] summary:after{transform:translateY(-50%) rotate(45deg)}
+  details p{padding:0 18px 18px;color:var(--muted);font-size:.94rem}
+
+  /* Footer */
+  footer{background:var(--deep);color:#c3dcd8;padding:40px 0 30px;font-size:.88rem}
+  footer .logo{color:#fff;margin-bottom:10px}
+  .demo-note{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);font-size:.75rem;color:#8fb2ad}
+
+  /* Sticky mobile action bar */
+  .actionbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1.4fr;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(100%);transition:transform .3s}
+  .actionbar.show{transform:none}
+  .actionbar .btn{padding:13px 10px;font-size:.95rem}
+  .btn-wa{background:#1fa855;color:#fff}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation:none!important;transition:none!important}}
+
+  /* Larger screens */
+  @media (min-width:760px){
+    body{padding-bottom:0}
+    .actionbar{display:none}
+    .desk-links{display:flex;gap:26px;align-items:center;font-size:.92rem;font-weight:500}
+    .desk-links a{text-decoration:none;color:var(--muted)}
+    .desk-links a:hover{color:var(--deep)}
+    .desk-links .btn{padding:10px 16px;font-size:.9rem;color:#fff}
+    .hero{padding:60px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+    .hero h1{font-size:3.4rem}
+    .hero-art{display:block}
+    .cta-row{flex-direction:row}
+    .stats{max-width:480px}
+    h2{font-size:2.4rem}
+    section{padding:84px 0}
+    .finder{margin:0 auto;max-width:1040px;padding:70px 50px}
+    .finder-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .steps{grid-template-columns:repeat(3,1fr)}
+    .step{flex-direction:column}
+    .docs{grid-template-columns:1fr 1fr}
+    .rev{flex:0 0 380px}
+    .book-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:start}
+    .visit-grid{grid-template-columns:1.3fr 1fr}
+    .map{height:100%;min-height:340px}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="PhysioNest home">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="#e6f2ef"/>
+        <path d="M7 18c3 5 15 5 18 0" stroke="#1f6f6b" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M9 20.5c3 3.5 11 3.5 14 0" stroke="#0f3d3e" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+        <circle cx="16" cy="10.5" r="3" fill="#e8735a"/>
+        <path d="M16 13.5v4.5" stroke="#e8735a" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      PhysioNest
+    </a>
+    <nav class="desk-links">
+      <a href="#conditions">Conditions</a>
+      <a href="#team">Team</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+      <a class="btn btn-primary" href="#book">Book a session</a>
+    </nav>
+    <div class="status" id="status"><span class="dot"></span><span id="statusText">Checking…</span></div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-blob"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <a class="rating-pill" href="#reviews">
+          <span class="stars">★★★★★</span> 5.0 · 76 Google reviews
+        </a>
+        <h1>Move without pain <em>again.</em></h1>
+        <p>Personalised physiotherapy for neck, back and shoulder pain in Hinjewadi. Every patient gets their own assessment and an exercise plan built for them.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#book">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+            Book an appointment
+          </a>
+          <a class="btn btn-ghost" href="tel:+918625017751">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            Call 86250 17751
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Opp. DMart, Hinjawadi Phase 1</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon–Sat · 8:30 AM–9 PM</span>
+        </div>
+        <div class="stats">
+          <div class="stat"><b data-count="5.0" data-dec="1">0</b><small>Google rating</small></div>
+          <div class="stat"><b data-count="76">0</b><small>Reviews</small></div>
+          <div class="stat"><b data-count="6">0</b><small>Days a week</small></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 420" width="100%">
+          <defs>
+            <linearGradient id="g1" gradientUnits="userSpaceOnUse" x1="120" y1="100" x2="300" y2="340"><stop offset="0" stop-color="#1f6f6b"/><stop offset="1" stop-color="#0f3d3e"/></linearGradient>
+          </defs>
+          <circle cx="210" cy="210" r="190" fill="#e6f2ef"/>
+          <circle cx="210" cy="210" r="140" fill="none" stroke="#cfe6e0" stroke-width="2" stroke-dasharray="4 8"/>
+          <!-- abstract figure stretching -->
+          <circle cx="210" cy="118" r="26" fill="#e8735a"/>
+          <path d="M210 146 L210 250" stroke="url(#g1)" stroke-width="22" stroke-linecap="round"/>
+          <path d="M210 170 L140 120" stroke="url(#g1)" stroke-width="18" stroke-linecap="round"/>
+          <path d="M210 170 L280 120" stroke="url(#g1)" stroke-width="18" stroke-linecap="round"/>
+          <path d="M210 248 L165 330" stroke="url(#g1)" stroke-width="20" stroke-linecap="round"/>
+          <path d="M210 248 L255 330" stroke="url(#g1)" stroke-width="20" stroke-linecap="round"/>
+          <path d="M120 360 Q210 395 300 360" stroke="#e8735a" stroke-width="6" stroke-linecap="round" fill="none" opacity=".5"/>
+          <g fill="#fff" stroke="#dfe7e4">
+            <rect x="282" y="190" width="120" height="54" rx="14"/>
+            <rect x="18" y="230" width="128" height="54" rx="14"/>
+          </g>
+          <text x="298" y="214" font-family="Inter" font-size="12" font-weight="700" fill="#0f3d3e">★ 5.0 rating</text>
+          <text x="298" y="232" font-family="Inter" font-size="11" fill="#5b6b6b">76 Google reviews</text>
+          <text x="34" y="254" font-family="Inter" font-size="12" font-weight="700" fill="#0f3d3e">Your own plan</text>
+          <text x="34" y="272" font-family="Inter" font-size="11" fill="#5b6b6b">built for your body</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN FINDER -->
+  <section class="finder" id="conditions">
+    <div class="wrap finder-grid">
+      <div>
+        <p class="eyebrow">Where does it hurt?</p>
+        <h2>Tell us what's bothering you</h2>
+        <p class="lead">Tap the area that's troubling you to see how we treat it, then book in one tap.</p>
+        <div class="chips" id="chips" role="tablist"></div>
+      </div>
+      <div class="finder-card" id="finderCard" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow reveal">Our approach</p>
+      <h2 class="reveal">We treat the cause, not just the pain</h2>
+      <p class="lead reveal">Patients keep telling us the same thing: here, the treatment felt personal.</p>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><div><h3>Listen &amp; assess</h3><p>We take time to understand your history, your routine and where the pain really comes from.</p></div></div>
+        <div class="step reveal"><div class="step-n">2</div><div><h3>Explain clearly</h3><p>You'll know what's going on and what the treatment plan is before we start anything.</p></div></div>
+        <div class="step reveal"><div class="step-n">3</div><div><h3>Your own exercise plan</h3><p>Guided sessions plus exercises designed for you that are easy to follow at home, so the results last.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow reveal">Meet the team</p>
+      <h2 class="reveal">Care from people who take their time</h2>
+      <div class="docs">
+        <div class="doc reveal">
+          <div class="avatar" style="background:linear-gradient(135deg,#1f6f6b,#0f3d3e)">M</div>
+          <div><h3>Dr. Madhuri</h3><p>Physiotherapist</p><span class="tag">Neck &amp; back care</span></div>
+        </div>
+        <div class="doc reveal">
+          <div class="avatar" style="background:linear-gradient(135deg,#e8735a,#cf5c44)">S</div>
+          <div><h3>Dr. Sanchita</h3><p>Physiotherapist</p><span class="tag">Shoulder &amp; mobility</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="rev-head">
+        <div>
+          <p class="eyebrow">Patient stories</p>
+          <h2 style="margin:0">What our patients say</h2>
+        </div>
+        <div class="rev-score"><b>5.0</b><span class="stars">★★★★★</span><br><small>76 Google reviews</small></div>
+      </div>
+      <div class="track" id="track">
+        <article class="rev"><span class="stars">★★★★★</span><blockquote>"The treatment here felt much more personalized. They gave me a well-designed exercise plan specifically for my needs."</blockquote><cite>Google review · Neck pain</cite></article>
+        <article class="rev"><span class="stars">★★★★★</span><blockquote>"I've been battling a stubborn frozen shoulder… Today, I'm moving my arm again. So gentle in her approach."</blockquote><cite>Google review · Frozen shoulder</cite></article>
+        <article class="rev"><span class="stars">★★★★★</span><blockquote>"Personal attention, patience, kindness, and genuine concern for our recovery, for both myself and my mother."</blockquote><cite>Google review · Family care</cite></article>
+        <article class="rev"><span class="stars">★★★★★</span><blockquote>"They take time to understand the root cause of the problem and explain everything clearly before starting."</blockquote><cite>Google review</cite></article>
+        <article class="rev"><span class="stars">★★★★★</span><blockquote>"Best for those who look for back-pain relief and back to normal just by exercise."</blockquote><cite>Google review · Back pain</cite></article>
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book">
+    <div class="wrap book-wrap">
+      <div>
+        <p class="eyebrow reveal">Book a session</p>
+        <h2 class="reveal">Book in under a minute</h2>
+        <p class="lead reveal">Fill this in and it opens WhatsApp with your message ready. We'll confirm your slot. No calls, no waiting on hold.</p>
+      </div>
+      <form class="book-card reveal" id="bookForm" novalidate>
+        <label for="name">Your name</label>
+        <input id="name" autocomplete="name" placeholder="e.g. Rohan Kulkarni" required>
+        <label for="concern">What's the concern?</label>
+        <select id="concern"></select>
+        <label>Preferred day</label>
+        <div class="slots" id="days"></div>
+        <label>Preferred time</label>
+        <div class="slots" id="times">
+          <button type="button" class="slot active" data-v="Morning">Morning<small>8:30–12</small></button>
+          <button type="button" class="slot" data-v="Afternoon">Afternoon<small>12–5</small></button>
+          <button type="button" class="slot" data-v="Evening">Evening<small>5–9</small></button>
+        </div>
+        <label for="msg">Anything else? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+        <textarea id="msg" placeholder="How long has it been hurting? Any recent injury or surgery?"></textarea>
+        <button class="btn btn-wa" type="submit">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1 2.2 1.4 2.5 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.1 1.4z"/></svg>
+          Send booking on WhatsApp
+        </button>
+        <p class="note">Prefer to talk? Call <a href="tel:+918625017751">+91 86250 17751</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow reveal">Visit us</p>
+      <h2 class="reveal">Easy to find, opposite DMart</h2>
+      <div class="visit-grid">
+        <div class="map reveal">
+          <iframe loading="lazy" title="PhysioNest location map" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=18.5909023,73.7428289&z=17&output=embed"></iframe>
+        </div>
+        <div class="info reveal">
+          <h3>PhysioNest Physiotherapy Clinic</h3>
+          <p>Office No. 8, Shri Sant Tukaram Complex 2, Shivaji Chowk, Hinjawadi Phase 1 Rd, opp. DMart &amp; Tulja Bhavani Mandir, Hinjawadi, Pune 411057</p>
+          <table class="hours" id="hours"></table>
+          <a class="btn btn-ghost" style="margin-top:18px" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/dir/?api=1&destination=18.5909023,73.7428289&destination_place_id=ChIJE2hPNJHdaKsR8cwV_5y5r6g">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+            Get directions
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow reveal">FAQ</p>
+      <h2 class="reveal">Good to know</h2>
+      <div class="faq reveal">
+        <details><summary>Do I need a doctor's referral?</summary><p>No. You can book directly. If you have reports, X-rays or MRI scans, bring them to your first visit so we can understand your history.</p></details>
+        <details><summary>What happens in the first session?</summary><p>We start with a detailed assessment of your pain, posture and movement, explain what we find, and agree on a treatment plan together.</p></details>
+        <details><summary>How many sessions will I need?</summary><p>It depends on your condition and how long you've had it. We'll give you a clear estimate after your assessment.</p></details>
+        <details><summary>What should I wear?</summary><p>Comfortable, loose clothing that lets you move freely and gives easy access to the area being treated.</p></details>
+        <details><summary>Are you open on Sundays?</summary><p>We're open Monday to Saturday, 8:30 AM to 9 PM. Early and late slots work well around office hours.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">PhysioNest</div>
+    <p>Physiotherapy clinic · Hinjawadi Phase 1, Pune<br>
+    <a href="tel:+918625017751">+91 86250 17751</a> · Mon–Sat 8:30 AM–9 PM</p>
+    <p class="demo-note">Concept website prepared by Parth Patil as a proposal for PhysioNest. Not the clinic's official website. Reviews are excerpts from public Google reviews.</p>
+  </div>
+</footer>
+
+<div class="actionbar" id="actionbar">
+  <a class="btn btn-ghost" href="tel:+918625017751">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call
+  </a>
+  <a class="btn btn-wa" href="#book">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Book on WhatsApp
+  </a>
+</div>
+
+<script>
+const WA = "918625017751";
+
+/* ---------- Conditions (pain finder) ---------- */
+const CONDITIONS = {
+  "Neck pain": {
+    title: "Neck pain & stiffness",
+    text: "Long hours at a laptop, poor sleep posture or stress can all lock up the neck. We find what's driving it and build a plan to release it.",
+    points: ["Posture & ergonomic assessment", "Manual therapy for stiffness", "Exercise plan for desk workers"]
+  },
+  "Back pain": {
+    title: "Lower & upper back pain",
+    text: "Our patients get back to normal through targeted exercise, without relying on painkillers.",
+    points: ["Root-cause assessment", "Core & mobility strengthening", "Home exercises you can actually follow"]
+  },
+  "Frozen shoulder": {
+    title: "Frozen shoulder",
+    text: "Stiff, painful shoulders improve with patient, gentle, progressive work. We guide you safely back to full movement.",
+    points: ["Gentle mobilisation", "Step-by-step range-of-motion plan", "Recovery explained at every stage"]
+  },
+  "Desk & posture pain": {
+    title: "Desk job aches",
+    text: "Working in Hinjewadi means long hours sitting. We help with the neck, shoulder and back strain that come with it.",
+    points: ["Workstation & posture advice", "Short routines for between meetings", "Early & late slots around office hours"]
+  },
+  "Something else": {
+    title: "Not sure what it is?",
+    text: "Tell us what you're feeling. We'll assess it properly and tell you honestly whether physiotherapy is the right next step.",
+    points: ["Detailed first assessment", "Clear explanation before treatment", "Personalised plan if we can help"]
+  }
+};
+const chipsEl = document.getElementById("chips");
+const card = document.getElementById("finderCard");
+const concernSel = document.getElementById("concern");
+
+Object.keys(CONDITIONS).forEach((k, i) => {
+  const b = document.createElement("button");
+  b.className = "chip" + (i === 0 ? " active" : "");
+  b.type = "button"; b.textContent = k; b.setAttribute("role","tab");
+  b.onclick = () => selectCondition(k);
+  chipsEl.appendChild(b);
+  const o = document.createElement("option"); o.value = o.textContent = k; concernSel.appendChild(o);
+});
+function selectCondition(k){
+  [...chipsEl.children].forEach(c => c.classList.toggle("active", c.textContent === k));
+  const c = CONDITIONS[k];
+  card.innerHTML = `<div class="fade"><h3>${c.title}</h3><p>${c.text}</p>
+    <ul>${c.points.map(p => `<li>${p}</li>`).join("")}</ul>
+    <a class="btn btn-primary" href="#book" data-cond="${k}">Book for ${k.toLowerCase()}</a></div>`;
+  card.querySelector("a").onclick = () => { concernSel.value = k; };
+}
+selectCondition("Neck pain");
+
+/* ---------- Live open/closed status (IST) ---------- */
+const HOURS = {1:[510,1260],2:[510,1260],3:[510,1260],4:[510,1260],5:[510,1260],6:[510,1260],0:null};
+const DAYNAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function istNow(){
+  const parts = new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const get = t => parts.find(p => p.type === t).value;
+  const day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(get("weekday"));
+  return { day, mins: (+get("hour") % 24) * 60 + (+get("minute")) };
+}
+function fmt(m){ const h = Math.floor(m/60), mm = m%60, ap = h >= 12 ? "PM" : "AM"; return `${(h%12)||12}${mm ? ":" + String(mm).padStart(2,"0") : ""} ${ap}`; }
+function updateStatus(){
+  const {day, mins} = istNow(), h = HOURS[day], el = document.getElementById("status"), t = document.getElementById("statusText");
+  if (h && mins >= h[0] && mins < h[1]) { el.classList.add("open"); t.textContent = "Open · till " + fmt(h[1]); }
+  else {
+    el.classList.remove("open");
+    let d = day, first = true;
+    for (let i = 0; i < 7; i++) {
+      const hh = HOURS[d];
+      if (hh && (!first || mins < hh[0])) { t.textContent = "Opens " + (i === 0 ? "" : i === 1 ? "tomorrow " : DAYNAMES[d].slice(0,3) + " ") + fmt(hh[0]); break; }
+      d = (d + 1) % 7; first = false;
+    }
+  }
+  const tbl = document.getElementById("hours");
+  tbl.innerHTML = [1,2,3,4,5,6,0].map(d => `<tr class="${d===day?"today":""}"><td>${DAYNAMES[d]}</td><td>${HOURS[d] ? fmt(HOURS[d][0]) + " – " + fmt(HOURS[d][1]) : "Closed"}</td></tr>`).join("");
+}
+updateStatus(); setInterval(updateStatus, 60000);
+
+/* ---------- Booking day picker (next 6 open days) ---------- */
+const daysEl = document.getElementById("days");
+(function buildDays(){
+  const {day} = istNow(); const now = new Date(); let added = 0;
+  for (let i = 0; added < 6 && i < 10; i++) {
+    const wd = (day + i) % 7; if (!HOURS[wd]) continue;
+    const dt = new Date(now.getTime() + i * 864e5);
+    const label = i === 0 ? "Today" : i === 1 ? "Tomorrow" : DAYNAMES[wd].slice(0,3);
+    const date = dt.toLocaleDateString("en-IN",{day:"numeric",month:"short",timeZone:"Asia/Kolkata"});
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "slot" + (added === 0 ? " active" : "");
+    b.dataset.v = `${label} (${date})`; b.innerHTML = `${label}<small>${date}</small>`;
+    daysEl.appendChild(b); added++;
+  }
+})();
+[daysEl, document.getElementById("times")].forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest(".slot"); if (!b) return;
+  [...g.children].forEach(c => c.classList.toggle("active", c === b));
+}));
+
+document.getElementById("bookForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("name");
+  if (!name.value.trim()) { name.focus(); name.style.borderColor = "#e8735a"; name.placeholder = "Please enter your name"; return; }
+  const day = daysEl.querySelector(".active")?.dataset.v || "";
+  const time = document.querySelector("#times .active")?.dataset.v || "";
+  const extra = document.getElementById("msg").value.trim();
+  const text = `Hi PhysioNest, I'd like to book a physiotherapy session.\n\nName: ${name.value.trim()}\nConcern: ${concernSel.value}\nPreferred: ${day}, ${time}` + (extra ? `\nDetails: ${extra}` : "");
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, "_blank");
+});
+
+/* ---------- Reviews carousel dots + autoplay ---------- */
+const track = document.getElementById("track"), dotsEl = document.getElementById("dots"), revs = [...track.children];
+revs.forEach(() => dotsEl.appendChild(document.createElement("i")));
+function activeIdx(){ const c = track.scrollLeft + track.clientWidth/2; let best = 0, bd = Infinity; revs.forEach((r,i)=>{ const d = Math.abs(r.offsetLeft + r.offsetWidth/2 - c); if (d < bd){bd=d;best=i;} }); return best; }
+function paintDots(){ const a = activeIdx(); [...dotsEl.children].forEach((d,i)=>d.classList.toggle("on", i===a)); }
+track.addEventListener("scroll", () => requestAnimationFrame(paintDots), {passive:true});
+paintDots();
+let auto = setInterval(() => { const n = (activeIdx() + 1) % revs.length; track.scrollTo({left: revs[n].offsetLeft - (track.clientWidth - revs[n].offsetWidth)/2, behavior:"smooth"}); }, 5000);
+["touchstart","pointerdown"].forEach(ev => track.addEventListener(ev, () => clearInterval(auto), {once:true}));
+
+/* ---------- Count-up stats ---------- */
+const countObs = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; const el = e.target, to = parseFloat(el.dataset.count), dec = +(el.dataset.dec||0), t0 = performance.now();
+  (function tick(t){ const p = Math.min((t - t0)/1100, 1), v = to * (1 - Math.pow(1-p, 3)); el.textContent = v.toFixed(dec); if (p < 1) requestAnimationFrame(tick); })(t0);
+  countObs.unobserve(el);
+}), {threshold:.6});
+document.querySelectorAll("[data-count]").forEach(el => countObs.observe(el));
+
+/* ---------- Scroll reveal, header & action bar ---------- */
+const revObs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); revObs.unobserve(e.target);} }), {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => revObs.observe(el));
+const header = document.getElementById("top"), bar = document.getElementById("actionbar"), book = document.getElementById("book");
+let bookVisible = false;
+new IntersectionObserver(es => { bookVisible = es[0].isIntersecting; onScroll(); }, {threshold:.15}).observe(book);
+function onScroll(){ const y = scrollY; header.classList.toggle("scrolled", y > 8); bar.classList.toggle("show", y > 420 && !bookVisible); }
+addEventListener("scroll", onScroll, {passive:true}); onScroll();
+</script>
+</body>
+</html>
